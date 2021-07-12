@@ -24,15 +24,15 @@ const timeToZoom = 2000;
 const timeToOpenPopupAfterZoom = 4000;
 const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
 
-const popupContentHello = `<p>Hello 👋</p>`;
+const popupContentHello = `<p>You're here 👋</p>`;
 const popupContentGatsby = `
   <div class="popup-gatsby">
     <div class="popup-gatsby-image">
       <img class="gatsby-astronaut" src=${gatsby_astronaut} />
     </div>
     <div class="popup-gatsby-content">
-      <h1>Gatsby Leaflet Starter</h1>
-      <p>Welcome to your new Gatsby site. Now go build something great!</p>
+      <h1>Covid Tracking Map</h1>
+      <p></p>
     </div>
   </div>
 `;
