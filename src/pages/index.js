@@ -1,10 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import L from "leaflet";
-import { Marker, useMap } from "react-leaflet";
 import axios from 'axios';
-
-import { promiseToFlyTo, getCurrentLocation } from "lib/map";
 
 import Layout from "components/Layout";
 import Container from "components/Container";
@@ -42,7 +39,11 @@ const popupContentGatsby = `
  * @description This is an example of creating an effect used to zoom in and set a popup on load
  */
 
-async function MapEffect({ leafletElement: map} = {}) {
+
+
+const IndexPage = () => {
+
+  async function mapEffect({ leafletElement: map } = {}) {
     let response;
 
     try {
@@ -54,9 +55,6 @@ async function MapEffect({ leafletElement: map} = {}) {
 
     const { data = [] } = response;
 };
-
-const IndexPage = () => {
-  const markerRef = useRef();
 
   const mapSettings = {
     center: CENTER,
