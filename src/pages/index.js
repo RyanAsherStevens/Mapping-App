@@ -12,7 +12,7 @@ import gatsby_astronaut from "assets/images/gatsby-astronaut.jpg";
 
 const LOCATION = {
   lat: 0,
-  lng: ,
+  lng: 0,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
