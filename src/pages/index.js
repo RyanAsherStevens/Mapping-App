@@ -42,43 +42,8 @@ const popupContentGatsby = `
  * @description This is an example of creating an effect used to zoom in and set a popup on load
  */
 
-const MapEffect = ({ markerRef }) => {
-  const map = useMap();
+async function MapEffect({ leafletElement: map} = {}) {
 
-  useEffect(() => {
-    if (!markerRef.current || !map) return;
-
-    (async function run() {
-      const popup = L.popup({
-        maxWidth: 800,
-      });
-
-      const location = await getCurrentLocation().catch(() => LOCATION);
-
-      const { current: marker } = markerRef || {};
-
-      marker.setLatLng(location);
-      popup.setLatLng(location);
-      popup.setContent(popupContentHello);
-
-      setTimeout(async () => {
-        await promiseToFlyTo(map, {
-          zoom: ZOOM,
-          center: location,
-        });
-
-        marker.bindPopup(popup);
-
-        setTimeout(() => marker.openPopup(), timeToOpenPopupAfterZoom);
-        setTimeout(
-          () => marker.setPopupContent(popupContentGatsby),
-          timeToUpdatePopupAfterZoom
-        );
-      }, timeToZoom);
-    })();
-  }, [map, markerRef]);
-
-  return null;
 };
 
 const IndexPage = () => {
@@ -96,11 +61,7 @@ const IndexPage = () => {
         <title>Home Page</title>
       </Helmet>
 
-      <Map {...mapSettings}>
-        <MapEffect markerRef={markerRef} />
-        <Marker ref={markerRef} position={CENTER} />
-      </Map>
-
+      <Map {...mapSettings} />
       <Container type="content" className="text-center home-start">
         <h2>Still Getting Started?</h2>
         <p>Run the following in your terminal!</p>
