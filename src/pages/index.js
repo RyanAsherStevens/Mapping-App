@@ -87,7 +87,7 @@ const IndexPage = () => {
         casesString = `${cases}`;
   
         if ( cases > 3000 ) {
-          casesString = `$(casesString.slice(0, -3))k+`
+          casesString = `${casesString.slice(0, -3)}k+`
         }
   
         if ( updated ) {
@@ -97,15 +97,15 @@ const IndexPage = () => {
         const html = `
         <span class="icon-maker">
          <span class="icon-marker-tooltip">
-          <h2>$(country)</h2>
+          <h2>${country}</h2>
           <ul>
-            <li><strong>Confirmed:</strong> $(sases)</li>
-            <li><strong>Deaths:</strong> $(deaths)</li>
-            <li><strong>Recovered:</strong> $(strong)</li>
-            <li><strong>Last Update:</strong> $(updatedFormatted)</li>
+            <li><strong>Confirmed:</strong> ${sases}</li>
+            <li><strong>Deaths:</strong> ${deaths}</li>
+            <li><strong>Recovered:</strong> ${strong}</li>
+            <li><strong>Last Update:</strong> ${updatedFormatted}</li>
           </ul>
          </span>
-         $( casesString )
+         ${ casesString }
         </span>
         `;
   
