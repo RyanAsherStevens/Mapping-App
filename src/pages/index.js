@@ -6,9 +6,6 @@ import axios from 'axios';
 import Layout from "components/Layout";
 import Container from "components/Container";
 import Map from "components/Map";
-import Snippet from "components/Snippet";
-
-import gatsby_astronaut from "assets/images/gatsby-astronaut.jpg";
 
 const LOCATION = {
   lat: 0,
