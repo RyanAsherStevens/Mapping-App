@@ -16,23 +16,20 @@ const LOCATION = {
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
-const ZOOM = 10;
 
-const timeToOpenPopupAfterZoom = 4000;
-const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
 
-const popupContentHello = `<p>You're here 👋</p>`;
-const popupContentGatsby = `
-  <div class="popup-gatsby">
-    <div class="popup-gatsby-image">
-      <img class="gatsby-astronaut" src=${gatsby_astronaut} />
-    </div>
-    <div class="popup-gatsby-content">
-      <h1>Covid Tracking Map</h1>
-      <p></p>
-    </div>
-  </div>
-`;
+// const popupContentHello = `<p>You're here 👋</p>`;
+// const popupContentGatsby = `
+//   <div class="popup-gatsby">
+//     <div class="popup-gatsby-image">
+//       <img class="gatsby-astronaut" src=${gatsby_astronaut} />
+//     </div>
+//     <div class="popup-gatsby-content">
+//       <h1>Covid Tracking Map</h1>
+//       <p></p>
+//     </div>
+//   </div>
+// `;
 
 /**
  * MapEffect
@@ -49,7 +46,7 @@ const IndexPage = () => {
     try {
       response = await axios.get('https://corona.lmao.ninja/v2/countries');
     } catch(e) {
-      console.log('Failed to fetch countries: ${e.message}', e);
+      console.log(`Failed to fetch countries: ${e.message}`, e);
       return;
     }
 
