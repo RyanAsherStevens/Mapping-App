@@ -72,7 +72,60 @@ const IndexPage = () => {
         }
       })
     }
+
+    const geoJsonLayers = new L.GeoJSON(geoJson, {
+      pointToLayer: (feature = {}, latlng) => {
+        const { properties = {} } = feature;
+        let updatedFormatted;
+        let casesString;
+  
+        const {
+          country, 
+          updated,
+          cases,
+          deaths,
+          recovered
+        } = properties
+  
+        casesString = `${cases}`;
+  
+        if ( cases > 3000 ) {
+          casesString = `$(casesString.slice(0, -3))k+`
+        }
+  
+        if ( updated ) {
+          updatedFormatted = new Date(updated).toLocaleString();
+        }
+  
+        const html = `
+        <span class="icon-maker">
+         <span class="icon-marker-tooltip">
+          <h2>$(country)</h2>
+          <ul>
+            <li><strong>Confirmed:</strong> $(sases)</li>
+            <li><strong>Deaths:</strong> $(deaths)</li>
+            <li><strong>Recovered:</strong> $(strong)</li>
+            <li><strong>Last Update:</strong> $(updatedFormatted)</li>
+          </ul>
+         </span>
+         $( casesString )
+        </span>
+        `;
+  
+        return L.marker( latlng, {
+          icon: L.divIcon({
+            className: 'icon',
+            html
+          }),
+          riseOnHover: true
+        });
+      }
+    });
+    geoJsonLayers.addTo(map)
   }
+
+  
+
 
   const mapSettings = {
     center: CENTER,
