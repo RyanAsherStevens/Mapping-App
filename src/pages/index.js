@@ -20,7 +20,6 @@ const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
 const ZOOM = 10;
 
-const timeToZoom = 2000;
 const timeToOpenPopupAfterZoom = 4000;
 const timeToUpdatePopupAfterZoom = timeToOpenPopupAfterZoom + 3000;
 
