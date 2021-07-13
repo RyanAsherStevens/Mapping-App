@@ -11,8 +11,8 @@ import Snippet from "components/Snippet";
 import gatsby_astronaut from "assets/images/gatsby-astronaut.jpg";
 
 const LOCATION = {
-  lat: 38.9072,
-  lng: -77.0369,
+  lat: 0,
+  lng: ,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
@@ -51,7 +51,28 @@ const IndexPage = () => {
     }
 
     const { data = [] } = response;
-};
+    const hasData = Array.isArray(data) && data.length > 0;
+
+    if ( !hasData ) return;
+
+    const geoJson = {
+      type: 'FeatureCollection', 
+      features: data.map((country = {}) => {
+        const { countryInfo = {} } = country;
+        const { lat, long: lng } = countryInfo;
+        return {
+          type: 'Feature',
+          properties: {
+            ...country,
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: [ lng, lat ]
+          }
+        }
+      })
+    }
+  }
 
   const mapSettings = {
     center: CENTER,
